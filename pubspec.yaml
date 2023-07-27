@@ -14,9 +14,10 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   google_fonts: ^5.1.0
   lottie: ^2.5.0
-
-
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.15.0
+  firebase_database: ^10.2.4
+  cloud_firestore: ^4.8.4
 
 dev_dependencies:
   flutter_test:

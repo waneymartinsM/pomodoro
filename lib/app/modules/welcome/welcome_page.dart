@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/modules/home/home_page.dart';
 import 'package:pomodoro/app/modules/welcome/welcome_page_one.dart';
@@ -55,10 +54,10 @@ class _WelcomePageState extends State<WelcomePage> {
                 onLastPage
                     ? CustomAnimatedButton(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const HomePage()));
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => const HomePage()),
+                          );
                         },
                         widthMultiply: 1,
                         height: 45,
@@ -77,7 +76,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         colorText: CustomColors.white,
                         color: CustomColors.pinkMain,
                         text: "PRÓXIMO",
-                      )
+                      ),
               ],
             ),
           ),
