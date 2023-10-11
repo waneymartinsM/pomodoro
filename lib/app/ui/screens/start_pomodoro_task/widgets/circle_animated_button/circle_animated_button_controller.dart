@@ -4,14 +4,15 @@ import 'package:get/get.dart';
 import 'constant.dart';
 import 'enum.dart';
 
-class CircleAnimatedButtonController extends GetxController with GetSingleTickerProviderStateMixin {
+class CircleAnimatedButtonController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<AlignmentGeometry?> animationLeft;
   late final Animation<AlignmentGeometry?> animationRight;
 
   late CircleAnimatedButtonStatus _circleButtonStatus;
 
-  // When [inProgress] is true button does not respond to user tap
+  // Quando [inProgress] é verdadeiro, o botão não responde ao toque do usuário
   bool inProgress = false;
   double _turns = 0.0;
 
@@ -22,6 +23,7 @@ class CircleAnimatedButtonController extends GetxController with GetSingleTicker
   bool get isFinished => _circleButtonStatus.isFinished;
   double get turns => _turns;
 
+  // Inicializa o controlador com um status inicial
   void init(CircleAnimatedButtonStatus status) {
     _circleButtonStatus = status;
     if (isFinished) {
@@ -29,7 +31,12 @@ class CircleAnimatedButtonController extends GetxController with GetSingleTicker
     } else {
       _animationController.value = 1.0;
     }
-    update([kCancelButton_getbuilderKey, kRestartButton_getbuilderKey, kMainButton_getbuilderKey]);
+    // Atualiza os componentes de interface do usuário relacionados aos botões
+    update([
+      kCancelButton_getbuilderKey,
+      kRestartButton_getbuilderKey,
+      kMainButton_getbuilderKey
+    ]);
   }
 
   @override
@@ -42,6 +49,7 @@ class CircleAnimatedButtonController extends GetxController with GetSingleTicker
       () => update([kCancelButton_getbuilderKey, kRestartButton_getbuilderKey]),
     );
 
+    // Configura as animações para a esquerda e direita
     animationLeft = _animationController.drive(
       AlignmentGeometryTween(
         begin: AlignmentDirectional.center,
@@ -64,34 +72,40 @@ class CircleAnimatedButtonController extends GetxController with GetSingleTicker
     super.onClose();
   }
 
+  // Inicia a animação
   Future<void> startAnimation() async {
     _circleButtonStatus = CircleAnimatedButtonStatus.started;
     update([kMainButton_getbuilderKey]);
     await _startAnimations();
   }
 
+  // Reinicia a animação
   void restartAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.started;
     _turns += 1;
     update([kRestartButton_getbuilderKey, kMainButton_getbuilderKey]);
   }
 
+  // Pausa a animação
   void pauseAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.pause;
     update([kMainButton_getbuilderKey]);
   }
 
+  // Retoma a animação
   void resumeAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.resumed;
     update([kMainButton_getbuilderKey]);
   }
 
+  // Conclui a animação
   Future<void> finishAnimation() async {
     _circleButtonStatus = CircleAnimatedButtonStatus.finished;
     update([kMainButton_getbuilderKey]);
     await _startAnimations();
   }
 
+  // Inicia ou reverte as animações
   Future<void> _startAnimations() async {
     inProgress = true;
     if (isFinished) {

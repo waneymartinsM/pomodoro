@@ -10,14 +10,23 @@ import 'widgets/circle_animated_button/circle_animated_button_controller.dart';
 import 'widgets/countdown_timer/controller/countdown_timer_controller.dart';
 
 class StartPomodoroTaskScreenController extends GetxController {
+
+  // Controladores para a Contagem Regressiva e Botão Animado
   final _countdownTimerController = Get.put(CountdownTimerController());
   final _circleAnimatedButtonController = Get.put(CircleAnimatedButtonController());
+
+  // Variáveis observáveis para controlar a cor da tela e texto do Pomodoro
   final _showLinerGradientColors = false.obs;
   final _pomodoroText = ''.obs;
+
+  // Stream para notificar eventos na tela
   final _screenNotifier = StreamController<ScreenNotifierEvent>();
+
+  // Obter configurações do aplicativo para localizações de texto
   final _appText = Get.find<AppSettingsController>().localization;
   late PomodoroTaskTimer _timer;
 
+  // Getters para acessar informações do temporizador e do estado da tela
   bool get showLinerGradientColors => _showLinerGradientColors.value;
   Stream<ScreenNotifierEvent> get screenNotifier => _screenNotifier.stream;
   PomodoroTaskModel get pomodoroTask => _timer.pomodoroTask;
@@ -26,6 +35,7 @@ class StartPomodoroTaskScreenController extends GetxController {
   bool get isTimerStarted => !(_timer.timerStatus.isCanceled);
   bool get isTimerStopped => _timer.timerStatus.isStopped;
 
+  // Método para obter o texto específico do Pomodoro com base no estado
   String get _getPomodoroText {
     if (_timer.pomodoroStatus.isWorkTime) {
       return _appText.getWorkTimeText(_timer.currentMaxDuration);
@@ -36,11 +46,13 @@ class StartPomodoroTaskScreenController extends GetxController {
     }
   }
 
+  // Método para obter o texto do subtítulo
   String get _getSubtitleText {
     int round = _timer.pomodoroRound + (_timer.pomodoroStatus.isLongBreakTime ? 0 : 1);
     return "$round de ${_timer.maxPomodoroRound} sessões";
   }
 
+  // Método chamado quando o controlador é fechado
   @override
   void onClose() {
     _timer.cancel();
@@ -51,6 +63,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     super.onClose();
   }
 
+  // Método para inicializar o controlador
   void init(PomodoroTaskTimer timer, [bool isAlreadyStarted = false]) async {
     _timer = timer;
     final initState = timer.pomodoroTask;
@@ -59,6 +72,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     });
     checkSoundSettings();
     if (isAlreadyStarted) {
+      // Configurar a tela e iniciar o temporizador com base no estado inicial
       _countdownTimerController.init(
         maxDuration: _timer.currentMaxDuration,
         timerDuration: _timer.remainingDuration,
@@ -81,6 +95,7 @@ class StartPomodoroTaskScreenController extends GetxController {
         onPomodoroTimerFinish();
       }
     } else {
+      // Iniciar animações e o temporizador
       _countdownTimerController.init(
         maxDuration: _timer.currentMaxDuration,
         timerDuration: _timer.remainingDuration,
@@ -137,6 +152,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     _timer.cancel();
   }
 
+  // Método chamado quando o temporizador Pomodoro é concluído
   Future<void> onPomodoroTimerFinish() async {
     _timer.saveTaskReport(isCompleted: true);
     _countdownTimerController.maxDuration = _timer.currentMaxDuration;
@@ -149,6 +165,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     _screenNotifier.add(ScreenNotifierEvent.showPomodoroFinishSnackbar);
   }
 
+  // Método chamado quando uma rodada Pomodoro é concluída
   Future<void> onPomodoroRoundFinish() async {
     checkSoundSettings();
     _circleAnimatedButtonController.inProgress = true;
@@ -159,6 +176,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     _pomodoroText.value = _getPomodoroText;
   }
 
+  // Método para verificar as configurações de som
   Future<void> checkSoundSettings() async {
     if (await _timer.isSoundPlayerMuted) {
       _screenNotifier.add(ScreenNotifierEvent.showMuteAlertSnackbar);

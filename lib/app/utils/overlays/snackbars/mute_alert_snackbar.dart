@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'alert_base_snackbars.dart';
 
-ScaffoldFeatureController<Widget, SnackBarClosedReason> showMuteAlertSnackbar(
+ScaffoldFeatureController<Widget, SnackBarClosedReason> showMuteAlertSnackBar(
   BuildContext context,
   String text, {
   double? height,

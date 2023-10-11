@@ -11,6 +11,7 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
 
   bool _reverseAnimation = false;
 
+  // Getters para o estado do controlador
   bool get isStarted => _isStarted;
   CountdownTimerStatus get status => _status;
 
@@ -31,6 +32,7 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
     }
   }
 
+  // Método para alterar o estado do controlador
   void changeStatus(CountdownTimerStatus status) {
     _status = status;
     if (_status.isStart) {
@@ -46,6 +48,7 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
 
   @override
   void onInit() {
+    // Inicialização dos controladores de animação
     _rotationalLinesController =
         AnimationController(vsync: this, duration: const Duration(seconds: 3), value: 0.0)
           ..addStatusListener((_) => _continueAnimation())
@@ -62,14 +65,17 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
 
   @override
   void onClose() {
+    // Liberação de recursos quando o controlador é fechado
     _spaceBetweenLinesController.dispose();
     _rotationalLinesController.dispose();
     super.onClose();
   }
 
+  // Getters para valores de animação
   double get circularLinesDeg => _rotationalLinesController.value * -360;
   double get spaceBetweenRotationalLines => _spaceBetweenLinesController.value;
 
+  // Iniciar a animação
   Future<void> _start() async {
     _isStarted = true;
     update([kClockLines_getbuilder]);
@@ -107,12 +113,14 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
     }
   }
 
+  // Animação reversa das linhas rotacionais
   Future<void> _reverseRotationalLinesAnimation() async {
     if (_rotationalLinesController.status == AnimationStatus.dismissed) {
       await _rotationalLinesController.forward(from: 1.0);
     }
   }
 
+  // Animação das linhas rotacionais para a frente
   Future<void> _forwardRotationalLinesAnimation() async {
     if (_rotationalLinesController.status == AnimationStatus.completed) {
       _rotationalLinesController.forward(from: 0.0);

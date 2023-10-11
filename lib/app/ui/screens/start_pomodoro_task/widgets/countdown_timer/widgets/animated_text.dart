@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// Este widget permite transições suaves entre textos, controlando reversões e
+// animações. O texto anterior some para cima, e o novo surge de baixo.
+
 class AnimatedText extends StatefulWidget {
   const AnimatedText({
     Key? key,
@@ -9,15 +12,17 @@ class AnimatedText extends StatefulWidget {
     required this.animateWhenReverse,
   }) : super(key: key);
 
-  final bool reverse;
+  final bool reverse; // determina se a animação deve ser revertida
   final String text;
-  final bool animateWhenReverse;
+  final bool
+      animateWhenReverse; // controla se a animação deve ocorrer quando o texto é revertido
 
   @override
   State<AnimatedText> createState() => _AnimatedTextState();
 }
 
-class _AnimatedTextState extends State<AnimatedText> with SingleTickerProviderStateMixin {
+class _AnimatedTextState extends State<AnimatedText>
+    with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
   late final Animation<AlignmentGeometry> animationAlignmentPreviousText;
   late final Animation<AlignmentGeometry> animationAlignmentNewText;
@@ -36,16 +41,20 @@ class _AnimatedTextState extends State<AnimatedText> with SingleTickerProviderSt
     previousText = widget.text;
     newText = widget.text;
 
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 250), value: 1.0);
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 250), value: 1.0);
     animationAlignmentPreviousText =
         AlignmentTween(begin: Alignment.center, end: Alignment.topCenter)
             .animate(animationController);
-    animationAlignmentNewText = AlignmentTween(begin: Alignment.bottomCenter, end: Alignment.center)
-        .animate(animationController);
-    animationOpacityPreviousText = Tween<double>(begin: 1.0, end: 0.0).animate(animationController);
-    animationScalePreviousText = Tween<double>(begin: 1.0, end: 0.5).animate(animationController);
-    animationScaleNewText = Tween<double>(begin: 0.5, end: 1.0).animate(animationController);
+    animationAlignmentNewText =
+        AlignmentTween(begin: Alignment.bottomCenter, end: Alignment.center)
+            .animate(animationController);
+    animationOpacityPreviousText =
+        Tween<double>(begin: 1.0, end: 0.0).animate(animationController);
+    animationScalePreviousText =
+        Tween<double>(begin: 1.0, end: 0.5).animate(animationController);
+    animationScaleNewText =
+        Tween<double>(begin: 0.5, end: 1.0).animate(animationController);
     super.initState();
   }
 
@@ -110,7 +119,8 @@ class _AnimatedTextState extends State<AnimatedText> with SingleTickerProviderSt
                   previousText,
                   style: textStyle.copyWith(
                     fontSize: fontSize * animationScalePreviousText.value,
-                    color: textStyle.color!.withOpacity(animationOpacityPreviousText.value),
+                    color: textStyle.color!
+                        .withOpacity(animationOpacityPreviousText.value),
                   ),
                 ),
               );
@@ -125,7 +135,8 @@ class _AnimatedTextState extends State<AnimatedText> with SingleTickerProviderSt
                   newText,
                   style: textStyle.copyWith(
                     fontSize: fontSize * animationScaleNewText.value,
-                    color: textStyle.color!.withOpacity(animationController.value),
+                    color:
+                        textStyle.color!.withOpacity(animationController.value),
                   ),
                 ),
               );

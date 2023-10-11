@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 import 'dart:math' as math;
-
 import '../constants.dart';
 
+//CustomPainter é usado para desenhar as linhas de um relógio:
 class ClockLinesPainter extends CustomPainter {
   ClockLinesPainter({
     required this.hide,

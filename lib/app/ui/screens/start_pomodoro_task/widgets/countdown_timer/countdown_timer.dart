@@ -36,6 +36,7 @@ class CountdownTimer extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
+          // Cria uma pintura de fundo circular com sombra
           RepaintBoundary(
             child: CustomPaint(
               painter: CircularBackgroundLinePainter(
@@ -46,6 +47,8 @@ class CountdownTimer extends StatelessWidget {
               ),
             ),
           ),
+
+          // Cria linhas do relógio quando o temporizador não está ativo
           RepaintBoundary(
             child: GetBuilder<CircularRotationalLinesController>(
               id: kClockLines_getbuilder,
@@ -58,6 +61,8 @@ class CountdownTimer extends StatelessWidget {
               ),
             ),
           ),
+
+          // Cria a linha circular de contagem regressiva animada
           RepaintBoundary(
             child: GetBuilder<TimerAnimationsController>(
               id: kCircularLine_getbuilder,
@@ -72,6 +77,8 @@ class CountdownTimer extends StatelessWidget {
               ),
             ),
           ),
+
+          // Cria linhas circulares rotacionais animadas
           RepaintBoundary(
             child: GetBuilder<CircularRotationalLinesController>(
               id: kCircularRotationalLines_getbuilder,
@@ -89,6 +96,8 @@ class CountdownTimer extends StatelessWidget {
               ),
             ),
           ),
+
+          // Cria um círculo central com texto animado
           RepaintBoundary(
             child: Container(
               alignment: AlignmentDirectional.center,
@@ -100,6 +109,7 @@ class CountdownTimer extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Cria o texto animado para a contagem regressiva
                     Directionality(
                       textDirection: TextDirection.ltr,
                       child: GetBuilder<TimerAnimationsController>(
@@ -112,14 +122,23 @@ class CountdownTimer extends StatelessWidget {
                         },
                       ),
                     ),
+
+                    // Cria o subtítulo animado
                     GetBuilder<CountdownTimerController>(
                       id: kSubtitleText_getbuilder,
                       builder: (controller) {
                         return AnimatedTextStyle(
                           text: controller.subtitleText,
-                          textStyle:
-                              const TextStyle(fontSize: 0, inherit: false, color: Colors.deepPurple),
-                          secondTextStyle: theme.primaryTextTheme.bodyMedium!,
+                          textStyle: const TextStyle(
+                              fontSize: 0,
+                              inherit: false,
+                              color: Colors.deepPurple),
+                          secondTextStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: CustomColors.pinkMain,
+                            inherit: false,
+                          ),
                         );
                       },
                     ),

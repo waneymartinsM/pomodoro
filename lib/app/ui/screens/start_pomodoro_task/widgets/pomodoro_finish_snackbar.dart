@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/utils/overlays/snackbars/alert_base_snackbars.dart';
 
-ScaffoldFeatureController<Widget, SnackBarClosedReason> showPomodoroFinishSnackBar(
-    BuildContext context) {
-  final theme = Theme.of(context);
-  final localization = AppLocalization.of(context);
+ScaffoldFeatureController<Widget, SnackBarClosedReason>
+    showPomodoroFinishSnackBar(BuildContext context) {
   return showAlertBaseSnackBar(
     context,
-    height: 90.h,
+    height: 90,
     text: Text(
-      localization.startPomodoroTaskScreenPomodoroFinish,
-      style: theme.textTheme.bodyLarge,
+      "Bom trabalho! Sua tarefa pomodoro foi concluída.",
+      style: GoogleFonts.poppins(),
     ),
-    icon: Icon(
-      Icons.done,
-      color: theme.colorScheme.secondary,
-      size: 50.r,
-    ),
+    icon: const Icon(Icons.done, color: CustomColors.black, size: 50),
   );
 }

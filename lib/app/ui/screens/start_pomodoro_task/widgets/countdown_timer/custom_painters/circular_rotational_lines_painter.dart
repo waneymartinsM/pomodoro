@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 
+//CircularRotationalLinesPainter usado para desenhar uma série de linhas circulares rotativas em um círculo maior:
 class CircularRotationalLinesPainter extends CustomPainter {
   CircularRotationalLinesPainter({
     required this.rotationalLinesDeg,

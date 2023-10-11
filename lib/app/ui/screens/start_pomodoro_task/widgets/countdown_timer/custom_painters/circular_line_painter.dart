@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 import '../constants.dart';
 
+//CircularLinePainter usado para desenhar uma linha circular com cores gradiente em um determinado ângulo
 class CircularLinePainter extends CustomPainter {
   CircularLinePainter({
     required this.colors,

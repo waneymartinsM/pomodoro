@@ -31,14 +31,16 @@ class _StartPomodoroTaskScreenState extends State<StartPomodoroTaskScreen> {
       Future.delayed(
         const Duration(milliseconds: 700),
         () {
-          if (!mounted) return;
-          ScaffoldMessenger.of(context).clearSnackBars();
+          if (!mounted) return; // Verifica se o widget ainda está montado.
+          ScaffoldMessenger.of(context)
+              .clearSnackBars(); // Remove barras de aviso.
           if (event.isShowPomodoroFinishSnackbar) {
-            showPomodoroFinishSnackBar(context);
+            showPomodoroFinishSnackBar(
+                context); // Exibe uma barra de aviso de término do Pomodoro.
           } else {
-            showMuteAlertSnackbar(
+            showMuteAlertSnackBar(
                 context, "As configurações de som estão no modo silencioso.",
-                height: 60);
+                height: 60); // Exibe um aviso de som desligado.
           }
         },
       );
@@ -48,13 +50,13 @@ class _StartPomodoroTaskScreenState extends State<StartPomodoroTaskScreen> {
 
   @override
   void didChangeDependencies() {
-    theme = Theme.of(context);
+    theme = Theme.of(context); // Obtém o tema atual do contexto.
     super.didChangeDependencies();
   }
 
   @override
   void dispose() {
-    Get.delete<StartPomodoroTaskScreenController>();
+    Get.delete<StartPomodoroTaskScreenController>(); // Remove o controlador da tela.
     super.dispose();
   }
 
@@ -65,7 +67,7 @@ class _StartPomodoroTaskScreenState extends State<StartPomodoroTaskScreen> {
     return WillPopScope(
       onWillPop: () async {
         if (controller.isTimerStarted) {
-          await Get.find<AppController>().onAppPaused();
+          await Get.find<AppController>().onAppPaused(); // Pausa a aplicação.
           SystemNavigator.pop();
           return false;
         }
@@ -121,12 +123,8 @@ class _Body extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             height: 50,
             child: Obx(
-
               () => GradientText(
-                colors: const [
-                  CustomColors.mediumGrey,
-                  CustomColors.black
-                ],
+                colors: const [CustomColors.mediumGrey, CustomColors.black],
                 text: AnimatedTextStyle(
                   text: controller.pomodoroText,
                   textStyle: const TextStyle(

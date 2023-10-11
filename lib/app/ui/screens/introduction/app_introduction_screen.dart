@@ -58,15 +58,23 @@ class AppIntroductionScreen extends StatelessWidget {
   }
 
   Text _buildTextSkip() {
-    return Text("Pular",
-        style: GoogleFonts.poppins(
-            color: CustomColors.pinkMain, fontWeight: FontWeight.w500));
+    return Text(
+      "Pular",
+      style: GoogleFonts.poppins(
+        color: CustomColors.pinkMain,
+        fontWeight: FontWeight.w500,
+      ),
+    );
   }
 
   Text _buildTextDone() {
-    return Text("Feito",
-        style: GoogleFonts.poppins(
-            color: CustomColors.pinkMain, fontWeight: FontWeight.w500));
+    return Text(
+      "Feito",
+      style: GoogleFonts.poppins(
+        color: CustomColors.pinkMain,
+        fontWeight: FontWeight.w500,
+      ),
+    );
   }
 }
 
@@ -84,8 +92,5 @@ const _pageViewModelDecoration = PageDecoration(
     color: Colors.black,
   ),
   bodyTextStyle: TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 15,
-    fontWeight: FontWeight.w600,
-  ),
+      fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w600),
 );

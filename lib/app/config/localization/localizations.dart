@@ -4,17 +4,14 @@ import 'package:pomodoro/app/config/localization/app_localization_data.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 
 const englishLocale = Locale('en', 'US');
-const persianLocale = Locale('fa', 'IR');
+const portugueseLocale = Locale('pt', 'BR');
 
-const supportedLocales = [
-  englishLocale,
-  persianLocale,
-];
+const supportedLocales = [englishLocale, portugueseLocale];
 
 AppLocalizationData get englishLocalization => AppLocalizationData(
       locale: englishLocale,
-      fontFamily: 'SourceSansPro',
-      appName: 'Sptimer',
+      fontFamily: 'Poppins',
+      appName: 'Pomodoro',
       convertNumber: (number) => number,
       convertDateToString: (date) => date.convertToDateString,
       // tasks screen
@@ -114,7 +111,7 @@ AppLocalizationData get englishLocalization => AppLocalizationData(
     );
 
 AppLocalizationData get persianLocalization => AppLocalizationData(
-      locale: persianLocale,
+      locale: portugueseLocale,
       fontFamily: 'SourceSansPro',
       appName: 'Sptimer',
       convertNumber: (number) => number.withPersianNumbers(),

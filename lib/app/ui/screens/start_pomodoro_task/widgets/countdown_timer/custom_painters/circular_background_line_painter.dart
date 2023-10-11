@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 
+//CircularBackgroundLinePainter usado para desenhar uma linha circular de fundo com um efeito de sombra
 class CircularBackgroundLinePainter extends CustomPainter {
   CircularBackgroundLinePainter({
     required this.strokeWidth,

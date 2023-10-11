@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
   BuildContext context, {
@@ -13,22 +12,19 @@ ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
     dismissDirection: DismissDirection.horizontal,
     backgroundColor: Colors.transparent,
     behavior: SnackBarBehavior.floating,
-    margin: EdgeInsets.all(10.r),
+    margin: const EdgeInsets.all(10),
     padding: EdgeInsets.zero,
     duration: const Duration(seconds: 5),
     elevation: 0.0,
     content: Container(
       height: height,
-      padding: EdgeInsets.all(10.r),
+      padding: const EdgeInsets.all(10),
       alignment: AlignmentDirectional.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
           colors: colors ??
-              [
-                theme.colorScheme.background,
-                theme.colorScheme.surface,
-              ],
+              [theme.colorScheme.background, theme.colorScheme.surface],
         ),
         boxShadow: const [
           BoxShadow(
@@ -42,10 +38,8 @@ ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
       child: Row(
         children: [
           if (icon != null) icon,
-          10.horizontalSpace,
-          Expanded(
-            child: text,
-          ),
+          const SizedBox(width: 10),
+          Expanded(child: text),
         ],
       ),
     ),

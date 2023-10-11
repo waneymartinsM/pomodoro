@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+// Definindo um tipo de função que atualiza o estado com um valor genérico T
 typedef ValueStateBuilderUpdater<T> = void Function(T);
+
+// Definindo um tipo de função que constrói o widget com base no valor genérico T e no atualizador
 typedef ValueStateBuilderBuilderCallBack<T> = Widget Function(
     BuildContext context, T value, ValueStateBuilderUpdater<T> updater);
 

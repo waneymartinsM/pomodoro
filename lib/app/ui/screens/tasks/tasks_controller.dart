@@ -21,6 +21,7 @@ class TasksController extends GetxController {
   final _remainedTasksListStatus = TasksListStatus.loading.obs;
   final _isAnimatingInitialValues = true.obs;
 
+  //Getters para acessar as listas e estados das listas
   List<PomodoroTaskModel> get allTasks => _allTasks;
   List<PomodoroTaskModel> get doneTasks => _doneTasks;
   List<PomodoroTaskModel> get remainedTasks => _remainedTasks;
@@ -41,6 +42,7 @@ class TasksController extends GetxController {
     super.onInit();
   }
 
+  // Método de inicialização:
   Future<void> init() async {
     await _database.init();
     final result = await _database.getAll();
@@ -58,12 +60,14 @@ class TasksController extends GetxController {
     );
   }
 
+  // Marcar todas as listas como erro:
   void _markAllAsError() {
     _allTasksListStatus.value = TasksListStatus.error;
     _doneTasksListStatus.value = TasksListStatus.error;
     _remainedTasksListStatus.value = TasksListStatus.error;
   }
 
+  // Inserir tarefas com animações:
   Future<void> _insertAllWithAnimation(List<PomodoroTaskModel> newTasks) async {
     for (var i = 0; i < newTasks.length; i++) {
       await Future.delayed(const Duration(milliseconds: 100));
@@ -77,6 +81,7 @@ class TasksController extends GetxController {
     _isAnimatingInitialValues.value = false;
   }
 
+  // Inicializar listas de tarefas concluídas e não concluídas:
   Future<void> _initDoneAndRemainedTasks(List<PomodoroTaskModel> newTasks) async {
     _doneTasksListStatus.value = TasksListStatus.loading;
     _remainedTasksListStatus.value = TasksListStatus.loaded;
@@ -107,6 +112,7 @@ class TasksController extends GetxController {
     );
   }
 
+  // Adicionar tarefa com animações:
   Future<void> addTask(PomodoroTaskModel task) async {
     final result = await _database.add(task);
     result.fold(
@@ -124,27 +130,30 @@ class TasksController extends GetxController {
     );
   }
 
+  // Atualizar tarefa:
   Future<void> updateTask(PomodoroTaskModel task) async {
     final result = await _database.update(task);
 
     result.fold(
-      (l) {
+          (l) {
         _markAllAsError();
       },
-      (r) async {
+          (r) async {
         final indexInAllTask = _allTasks.indexWhere((e) => e.id == task.id);
         _allTasks[indexInAllTask] = task;
 
         final indexInDoneTasks = _doneTasks.indexWhere((e) => e.id == task.id);
         if (indexInDoneTasks != -1) _doneTasks[indexInDoneTasks] = task;
 
-        final indexInRemainTasks = _remainedTasks.indexWhere((e) => e.id == task.id);
+        final indexInRemainTasks = _remainedTasks.indexWhere((e) =>
+        e.id == task.id);
         if (indexInRemainTasks != -1) _remainedTasks[indexInRemainTasks] = task;
         await _tasksReportageDatabase.update(task);
       },
     );
   }
 
+  // Remover item com animações:
   void _removeItemWithAnimation(
     GlobalKey<AnimatedListState> key,
     List<PomodoroTaskModel> list,
@@ -159,6 +168,7 @@ class TasksController extends GetxController {
     list.removeAt(index);
   }
 
+  // Excluir tarefa:
   Future<void> deleteTask(int id) async {
     final result = await _database.delete(id);
 

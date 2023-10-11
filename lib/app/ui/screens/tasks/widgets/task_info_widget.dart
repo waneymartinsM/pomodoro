@@ -105,17 +105,15 @@ class TaskInfoWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               _TaskInfoLabel(
-                                title: localization.tasksScreenWorkTimePrefix,
+                                title: 'T', //TRABALHO
                                 minutes: task.workDuration.inMinutes,
                               ),
                               _TaskInfoLabel(
-                                title: localization
-                                    .tasksScreenShortBreakTimePrefix,
+                                title: 'IC', //INTERVALO CURTO
                                 minutes: task.shortBreakDuration.inMinutes,
                               ),
                               _TaskInfoLabel(
-                                title:
-                                    localization.tasksScreenLongBreakTimePrefix,
+                                title: 'IL', // INTERVALO LONGO
                                 minutes: task.longBreakDuration.inMinutes,
                               ),
                             ],

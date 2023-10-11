@@ -99,7 +99,7 @@ class _TonePickerBottomSheetState extends State<_TonePickerBottomSheet> {
     if (controller.isToneMuted) return;
     if (await player.cantPlaySound()) {
       ScaffoldMessenger.of(context).removeCurrentSnackBar();
-      showMuteAlertSnackbar(
+      showMuteAlertSnackBar(
         context,
         localization.addPomodoroScreenSoundSettingMute,
         height: 60,

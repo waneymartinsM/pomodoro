@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Classe que cria um widget de texto com transição suave entre dois estilos de texto
 class AnimatedTextStyle extends StatefulWidget {
   const AnimatedTextStyle({
     Key? key,
@@ -16,13 +17,15 @@ class AnimatedTextStyle extends StatefulWidget {
   State<AnimatedTextStyle> createState() => _AnimatedTextStyleState();
 }
 
-class _AnimatedTextStyleState extends State<AnimatedTextStyle> with SingleTickerProviderStateMixin {
+class _AnimatedTextStyleState extends State<AnimatedTextStyle>
+    with SingleTickerProviderStateMixin {
   String? text;
   late final AnimationController controller;
 
   @override
   void initState() {
-    text = widget.text;
+    text =
+        widget.text; // Inicializa o texto com o valor passado via propriedade
     controller = AnimationController(
       vsync: this,
       value: text != null ? 1.0 : 0.0,
@@ -34,12 +37,13 @@ class _AnimatedTextStyleState extends State<AnimatedTextStyle> with SingleTicker
 
   @override
   void didUpdateWidget(covariant AnimatedTextStyle oldWidget) {
-    if (widget.text != oldWidget.text) {
+    if (widget.text != oldWidget.text) {// Verifica se o texto atual é diferente do texto anterior
       if (widget.text != null) {
-        text = widget.text;
-        controller.forward();
+        text = widget.text; // Atualiza o texto atual com o novo texto
+        controller.forward(); // Inicia a animação para mostrar o novo texto
       } else {
-        controller.reverse().then((value) => text = null);
+        controller.reverse().then(
+            (value) => text = null); // Inicia a animação para esconder o texto
       }
     }
     super.didUpdateWidget(oldWidget);
@@ -52,7 +56,7 @@ class _AnimatedTextStyleState extends State<AnimatedTextStyle> with SingleTicker
       builder: (_, __) {
         return Text(
           text ?? '',
-          style: TextStyle.lerp(
+          style: TextStyle.lerp( // Interpola entre os estilos de texto inicial e secundário com base no valor da animação
             widget.textStyle,
             widget.secondTextStyle,
             controller.value,
