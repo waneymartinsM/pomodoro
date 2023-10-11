@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
@@ -7,19 +6,21 @@ import 'package:pomodoro/app/data/models/pomodoro_task_reportage_model.dart';
 import 'package:pomodoro/app/utils/extensions/extensions.dart';
 
 class TasksReportageDatabase {
-  late LazyBox _tasksBox;
-  final _onChangesNotifier = StreamController.broadcast();
+  late LazyBox _tasksBox;  // Uma caixa do Hive para armazenar relatórios de tarefas
+  final _onChangesNotifier = StreamController.broadcast();  // Controlador de fluxo para notificar sobre alterações
 
+  // Inicializa a caixa de relatórios de tarefas do Hive
   Future<void> init() async {
     _tasksBox = await Hive.openLazyBox('tasks_reportage');
   }
 
-  int get tasksLength => _tasksBox.length;
+  int get tasksLength => _tasksBox.length;  // Obtém o número de relatórios de tarefas
 
   void listen(void Function() listener) {
     _onChangesNotifier.stream.listen((_) => listener());
   }
 
+  // Obtém uma lista de relatórios de tarefas no intervalo especificado
   Future<Either<Exception, List<PomodoroTaskReportageModel>>> getTasks(
       int begin, int end) async {
     try {
@@ -37,6 +38,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Obtém todos os relatórios de tarefas em uma data específica
   Future<Either<Exception, List<PomodoroTaskReportageModel>>>
       getAllReportagesInDate(DateTime date) async {
     try {
@@ -59,6 +61,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Obtém um relatório de tarefa com base em um índice específico
   Future<Either<Exception, PomodoroTaskReportageModel>> getByIndex(
       int index) async {
     try {
@@ -71,6 +74,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Obtém o índice onde uma função de teste é verdadeira
   Future<Either<Exception, int?>> indexWhere(
     bool Function(PomodoroTaskReportageModel t) test,
   ) async {
@@ -91,6 +95,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Adiciona um novo relatório de tarefa ao Hive e notifica sobre a alteração
   Future<Either<Exception, PomodoroTaskReportageModel>> add(
       PomodoroTaskReportageModel task) async {
     try {
@@ -102,6 +107,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Atualiza um relatório de tarefa com base no modelo de tarefa Pomodoro
   Future<Either<Exception, void>> update(
       PomodoroTaskModel pomodoroTaskModel) async {
     try {
@@ -124,6 +130,7 @@ class TasksReportageDatabase {
     }
   }
 
+  // Deleta um relatório de tarefa com base no ID da tarefa Pomodoro
   Future<Either<Exception, void>> delete(int pomodoroTaskId) async {
     try {
       for (var key in _tasksBox.keys) {

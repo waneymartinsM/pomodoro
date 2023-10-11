@@ -37,12 +37,14 @@ class AddPomodoroTaskScreenController extends GetxController {
   double statusVolume;
   bool readStatusAloud;
 
+  // Getters para verificar se o som está mudo ou se a tarefa está em edição
   bool get isReadStatusMuted => statusVolume == 0.0 || readStatusAloud == false;
   bool get isToneMuted => toneVolume == 0.0 || tone.value == Tones.none;
   bool get isEditing => _isEditing;
   bool get isShortBreakPickerActive => _isShortBreakPickerActive.value;
   int get maxPomodoroRound => _maxPomodoroRound;
 
+  // Validador para o campo de título
   String? titleValidator(String? text) {
     if (text == null || text.isEmpty) {
       return "Digite o título da tarefa";
@@ -52,15 +54,18 @@ class AddPomodoroTaskScreenController extends GetxController {
     return null;
   }
 
+  // Método chamado quando o valor de maxPomodoroRound é alterado
   void onMaxPomodoroRoundChange(int value) {
     _maxPomodoroRound = value;
     _isShortBreakPickerActive.value = value != 1;
   }
 
+  // Método para salvar o título da tarefa
   void titleSaver(String? text) {
     title = text!;
   }
 
+  // Método para rolar a tela para o topo
   Future<void> scrollToTop() async {
     await scrollController.animateTo(
       0.0,
@@ -69,6 +74,7 @@ class AddPomodoroTaskScreenController extends GetxController {
     );
   }
 
+  // Método para criar um objeto PomodoroTaskModel a partir dos dados do formulário
   PomodoroTaskModel? addTask() {
     if (!formKey.currentState!.validate()) {
       scrollToTop();
@@ -93,6 +99,7 @@ class AddPomodoroTaskScreenController extends GetxController {
     return task;
   }
 
+  // Método chamado quando o controlador é fechado
   @override
   void onClose() {
     scrollController.dispose();

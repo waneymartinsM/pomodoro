@@ -9,6 +9,7 @@ import 'package:pomodoro/app/ui/screens/home/home_page.dart';
 import 'package:pomodoro/app/ui/screens/introduction/app_introduction_screen.dart';
 import 'package:pomodoro/app/ui/screens/start_pomodoro_task/start_pomodoro_task_screen.dart';
 
+// Um mapa de rotas associando nomes de rota a construtores de widgets.
 final Map<String, WidgetBuilder> appRoutes = {
   RoutesName.homeScreen: (context) => const HomePage(),
   RoutesName.startPomodoroTaskScreen: (context) => const StartPomodoroTaskScreen(),
@@ -18,6 +19,7 @@ final Map<String, WidgetBuilder> appRoutes = {
   RoutesName.appIntroductionScreen: (context) => const AppIntroductionScreen(),
 };
 
+// Função que é chamada quando a rota é gerada. Ela cria uma transição de slide entre as telas.
 Route onGenerateRoute(RouteSettings settings) {
   final curveTween = CurveTween(curve: Curves.ease);
   final tweenOffset = Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).chain(curveTween);
@@ -35,6 +37,7 @@ Route onGenerateRoute(RouteSettings settings) {
   );
 }
 
+// Função que determina as rotas iniciais ao iniciar a aplicação.
 List<Route> onGenerateInitialRoutes(String initRoute) {
   if (initRoute == RoutesName.appIntroductionScreen) {
     return [
@@ -48,6 +51,7 @@ List<Route> onGenerateInitialRoutes(String initRoute) {
   ];
 }
 
+// Função que determina a rota inicial com base no estado da aplicação.
 String getInitialRoute() {
   if (Get.find<AppController>().isTimerAlreadyStarted) {
     return '${RoutesName.homeScreen}/${RoutesName.startPomodoroTaskScreen}';

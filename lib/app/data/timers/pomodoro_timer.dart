@@ -4,8 +4,8 @@ import 'package:pomodoro/app/data/enums/timer_status.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
 
 class PomodoroTimer {
-  Future<void> Function()? _onRoundFinish;
-  Future<void> Function()? _onFinish;
+  Future<void> Function()? _onRoundFinish; // Função a ser chamada ao final de um ciclo.
+  Future<void> Function()? _onFinish; // Função a ser chamada quando a tarefa é concluída.
 
   late CompleteTimer _timer;
   late int _pomodoroRound;

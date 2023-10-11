@@ -32,6 +32,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     super.initState();
   }
 
+  // Obtém o tema e localização da aplicação
   @override
   void didChangeDependencies() {
     theme = Theme.of(context);
@@ -39,6 +40,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     super.didChangeDependencies();
   }
 
+  // Remove o controlador quando a tela é fechada
   @override
   void dispose() {
     Get.delete<AddPomodoroTaskScreenController>();
@@ -89,6 +91,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     );
   }
 
+  // Constrói o campo de título da tarefa
   Widget _buildTaskTitle() {
     return Obx(
       () => BackgroundContainer(
@@ -115,6 +118,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     );
   }
 
+  // Constrói as configurações do Pomodoro (número de rounds, durações)
   Widget _buildPomodoroSettings() {
     return BackgroundContainer(
       height: 450,
@@ -179,6 +183,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     );
   }
 
+  // Constrói as configurações de som (vibração, tom, volume)
   Widget _buildSoundSettings() {
     return BackgroundContainer(
       child: Column(
@@ -201,6 +206,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
     );
   }
 
+  // Constrói o botão para adicionar a tarefa
   Widget _buildAddTask() {
     return Align(
       alignment: AlignmentDirectional.bottomCenter,
