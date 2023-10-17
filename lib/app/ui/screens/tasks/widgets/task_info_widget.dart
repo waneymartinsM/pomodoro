@@ -24,7 +24,6 @@ class TaskInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final localization = AppLocalization.of(context);
     final sizeCurveTween = CurveTween(curve: Curves.easeOutQuart);
     final tweenOffset =
         Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero);

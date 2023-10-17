@@ -10,18 +10,21 @@ import 'package:pomodoro/app/data/databases/app_settings_database.dart';
 import 'package:pomodoro/app/data/models/app_settings.dart';
 
 class AppSettingsController extends GetxController {
+  AppSettingsController() {
+    _theme = ThemeData.light(); // Inicialize com um valor padrão (ajuste conforme necessário)
+  }
   final _settingsDatabase = AppSettingsDatabase();
   late ThemeData _theme;
   late bool _isDarkTheme;
-  late AppLocalizationData _appTexts;
+  //late AppLocalizationData _appTexts;
   late bool _isFirstAppRun;
   AppSettings? _appSettings;
 
   ThemeData get theme => _theme;
   bool get isDarkTheme => _isDarkTheme;
-  bool get isEnglish => _appTexts.locale == englishLocale;
+ // bool get isEnglish => _appTexts.locale == englishLocale;
   bool get isFirstAppRun => _isFirstAppRun;
-  AppLocalizationData get localization => _appTexts;
+ // AppLocalizationData get localization => _appTexts;
 
   Future<void> init() async {
     await _settingsDatabase.init();
@@ -32,11 +35,11 @@ class AppSettingsController extends GetxController {
         _appSettings = r;
         if (_appSettings != null) {
           _isFirstAppRun = false;
-          _initLocale(_appSettings!.isEnglish); // Inicializa a localização com base nas configurações
+         // _initLocale(_appSettings!.isEnglish); // Inicializa a localização com base nas configurações
         } else {
           _isFirstAppRun = true;
           final isEnglishLocale = Platform.localeName.substring(0, 2) == 'en';
-          _initLocale(isEnglishLocale); // Define a localização com base no idioma do dispositivo
+          //_initLocale(isEnglishLocale); // Define a localização com base no idioma do dispositivo
         }
       },
     );
@@ -55,13 +58,13 @@ class AppSettingsController extends GetxController {
   // Salva as configurações atuais (tema e idioma) no banco de dados
   Future<void> _saveSettings() async {
     await _settingsDatabase.saveSettings(
-      AppSettings(isDarkTheme: isDarkTheme, isEnglish: isEnglish),
+      AppSettings(isDarkTheme: isDarkTheme,),
     );
   }
 
   // Alterna entre os idiomas (inglês e persa)
   void toggleLocalization() {
-    _initLocale(!isEnglish);
+    //_initLocale(!isEnglish);
     _initTheme(_isDarkTheme);
     update();
     _saveSettings();
@@ -77,11 +80,11 @@ class AppSettingsController extends GetxController {
   // Inicializa o tema com base no valor booleano
   void _initTheme(bool isDark) {
     _isDarkTheme = isDark;
-    _theme = isDark ? darkTheme(localization.fontFamily) : lightTheme(localization.fontFamily);
+    //_theme = isDark ? darkTheme(localization.fontFamily) : lightTheme(localization.fontFamily);
   }
 
   // Inicializa a localização com base no valor booleano
-  void _initLocale(bool isEnglishLocale) {
-    _appTexts = isEnglishLocale ? englishLocalization : persianLocalization;
-  }
+  // void _initLocale(bool isEnglishLocale) {
+  //   _appTexts = isEnglishLocale ? englishLocalization : persianLocalization;
+  // }
 }

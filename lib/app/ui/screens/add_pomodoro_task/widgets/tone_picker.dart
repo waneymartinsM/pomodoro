@@ -66,7 +66,6 @@ class _TonePickerBottomSheetState extends State<_TonePickerBottomSheet> {
   final scrollController = ScrollController();
   final player = PomodoroSoundPlayer();
   late ThemeData theme;
-  late AppLocalizationData localization;
 
   @override
   void initState() {
@@ -84,7 +83,6 @@ class _TonePickerBottomSheetState extends State<_TonePickerBottomSheet> {
   @override
   void didChangeDependencies() {
     theme = Theme.of(context);
-    localization = AppLocalization.of(context);
     super.didChangeDependencies();
   }
 
@@ -101,7 +99,7 @@ class _TonePickerBottomSheetState extends State<_TonePickerBottomSheet> {
       ScaffoldMessenger.of(context).removeCurrentSnackBar();
       showMuteAlertSnackBar(
         context,
-        localization.addPomodoroScreenSoundSettingMute,
+       'As configurações de som são definidas para silenciar.',
         height: 60,
       );
 

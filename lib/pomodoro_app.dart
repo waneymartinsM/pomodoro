@@ -20,26 +20,22 @@ class PomodoroApp extends StatelessWidget {
             return GetBuilder<AppSettingsController>(
               initState: (_) => Get.find<AppSettingsController>().initializeTheme(),
               builder: (controller) {
-                return AppLocalization(
-                  localization: controller.localization,
-                  isEnglish: controller.isEnglish,
-                  child: MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    onGenerateTitle: (context) => AppLocalization.of(context).appName,
-                    localizationsDelegates: const [
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: supportedLocales,
-                    locale: controller.localization.locale,
-                    color: controller.theme.colorScheme.background,
-                    theme: controller.theme,
-                    onGenerateInitialRoutes: onGenerateInitialRoutes,
-                    onGenerateRoute: onGenerateRoute,
-                    initialRoute: getInitialRoute(),
-                    builder: _builder,
-                  ),
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  // onGenerateTitle: (context) => AppLocalization.of(context).appName,
+                  // localizationsDelegates: const [
+                  //   GlobalMaterialLocalizations.delegate,
+                  //   GlobalWidgetsLocalizations.delegate,
+                  //   GlobalCupertinoLocalizations.delegate,
+                  // ],
+                  //supportedLocales: supportedLocales,
+                  // locale: controller.localization.locale,
+                  color: controller.theme.colorScheme.background,
+                  theme: controller.theme,
+                  onGenerateInitialRoutes: onGenerateInitialRoutes,
+                  onGenerateRoute: onGenerateRoute,
+                  initialRoute: getInitialRoute(),
+                  builder: _builder,
                 );
               },
             );

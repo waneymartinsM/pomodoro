@@ -89,8 +89,7 @@ class _VolumePickerState extends State<VolumePicker> {
             child: Row(
               children: [
                 RotatedBox(
-                  quarterTurns:
-                      AppLocalization.ofParent(context).isEnglish ? 0 : 2,
+                  quarterTurns: 0,
                   child: Obx(
                     () => Icon(
                       icon.value,

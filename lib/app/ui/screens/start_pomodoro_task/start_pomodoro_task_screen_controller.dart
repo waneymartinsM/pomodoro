@@ -23,7 +23,7 @@ class StartPomodoroTaskScreenController extends GetxController {
   final _screenNotifier = StreamController<ScreenNotifierEvent>();
 
   // Obter configurações do aplicativo para localizações de texto
-  final _appText = Get.find<AppSettingsController>().localization;
+  final _appText = Get.find<AppSettingsController>();
   late PomodoroTaskTimer _timer;
 
   // Getters para acessar informações do temporizador e do estado da tela
@@ -36,15 +36,25 @@ class StartPomodoroTaskScreenController extends GetxController {
   bool get isTimerStopped => _timer.timerStatus.isStopped;
 
   // Método para obter o texto específico do Pomodoro com base no estado
+  // String get _getPomodoroText {
+  //   if (_timer.pomodoroStatus.isWorkTime) {
+  //     return _appText.getWorkTimeText(_timer.currentMaxDuration);
+  //   } else if (_timer.pomodoroStatus.isShortBreakTime) {
+  //     return _appText.getShortBreakText(_timer.currentMaxDuration);
+  //   } else {
+  //     return _appText.getLongBreakText(_timer.currentMaxDuration);
+  //   }
+  // }
   String get _getPomodoroText {
     if (_timer.pomodoroStatus.isWorkTime) {
-      return _appText.getWorkTimeText(_timer.currentMaxDuration);
+      return 'Mantenha o foco por ${_timer.currentMaxDuration.inMinutes} minutos';
     } else if (_timer.pomodoroStatus.isShortBreakTime) {
-      return _appText.getShortBreakText(_timer.currentMaxDuration);
+      return 'Faça uma pequena pausa de ${_timer.currentMaxDuration.inMinutes} minutos';
     } else {
-      return _appText.getLongBreakText(_timer.currentMaxDuration);
+      return 'Faça uma pausa longa de ${_timer.currentMaxDuration.inMinutes} minutos';
     }
   }
+
 
   // Método para obter o texto do subtítulo
   String get _getSubtitleText {

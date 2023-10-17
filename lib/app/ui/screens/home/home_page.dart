@@ -37,13 +37,17 @@ class _HomePageState extends State<HomePage>
         backgroundColor: CustomColors.white,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: CustomColors.white,
-            title: Text("Pomodoro",
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ))),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: CustomColors.white,
+          title: Text(
+            "Pomodoro",
+            style: GoogleFonts.poppins(
+                fontSize: 24,
+                fontWeight: FontWeight.w400,
+                color: CustomColors.black),
+          ),
+        ),
         body: CustomTabBarView(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: Container(

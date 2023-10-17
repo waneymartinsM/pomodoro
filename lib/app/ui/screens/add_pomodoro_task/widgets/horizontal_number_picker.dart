@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
-import 'package:pomodoro/app/config/localization/app_localization_data.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 
 class HorizontalNumberPicker extends StatefulWidget {
@@ -46,7 +44,6 @@ class _HorizontalNumberPickerState extends State<HorizontalNumberPicker> {
 
   late ThemeData theme;
   late Color? inActiveColor;
-  late AppLocalizationData localization;
   late TextStyle centerTextStyle;
   late TextStyle minTextStyle;
   late TextStyle mediumTextStyle;
@@ -61,7 +58,6 @@ class _HorizontalNumberPickerState extends State<HorizontalNumberPicker> {
   @override
   void didChangeDependencies() {
     theme = Theme.of(context);
-    localization = AppLocalization.of(context);
     initStylesAndColors();
     super.didChangeDependencies();
   }

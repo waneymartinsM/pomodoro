@@ -170,6 +170,7 @@ class _AppBar extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       centerTitle: true,
+      elevation: 0,
       leading: IconButton(
         icon: const Icon(Icons.keyboard_arrow_left_rounded,
             size: 27, color: CustomColors.white),

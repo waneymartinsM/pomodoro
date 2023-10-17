@@ -25,7 +25,6 @@ class AddPomodoroTaskScreen extends StatefulWidget {
 class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
   late final AddPomodoroTaskScreenController controller;
   late ThemeData theme;
-  late AppLocalizationData localization;
   @override
   void initState() {
     controller = Get.put(AddPomodoroTaskScreenController(widget.task));
@@ -36,7 +35,6 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
   @override
   void didChangeDependencies() {
     theme = Theme.of(context);
-    localization = AppLocalization.of(context);
     super.didChangeDependencies();
   }
 
@@ -246,8 +244,8 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
             color: CustomColors.lightGrey,
             child: ListTileSwitch(
               defaultValue: controller.readStatusAloud,
-              title: localization.addPomodoroScreenReadStatusTitle,
-              description: localization.addPomodoroScreenReadStatusDescription,
+              title: "Leia o status",
+              description: "Leia o status da hora pomodoro em voz alta",
               onChange: (bool value) {
                 controller.readStatusAloud = value;
               },
