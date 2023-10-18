@@ -10,7 +10,7 @@ class Assets {
   static const String imagesHowToUse = 'assets/images/how_to_use.png';
   static const String imagesPomodoro = 'assets/images/pomodoro.png';
   static const String logoLogo = 'assets/logo/logo.png';
-  static const String logoPImage = 'assets/logo/p_image.png';
+  static const String logoLogoP = 'assets/logo/logo_p.png';
   static const String lottieAnimationLk9n699j = 'assets/lottie/animation_lk9n699j.json';
   static const String lottieAnimationLk9nia7r = 'assets/lottie/animation_lk9nia7r.json';
   static const String lottieAnimationLk9nr1ja = 'assets/lottie/animation_lk9nr1ja.json';

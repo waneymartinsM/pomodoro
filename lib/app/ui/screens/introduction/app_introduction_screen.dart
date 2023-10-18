@@ -51,7 +51,8 @@ class AppIntroductionScreen extends StatelessWidget {
           Navigator.pushReplacementNamed(context, RoutesName.homeScreen),
       onSkip: () =>
           Navigator.pushReplacementNamed(context, RoutesName.homeScreen),
-      next: const Icon(Icons.arrow_forward, color: CustomColors.pinkMain),
+      next: const Icon(Icons.keyboard_arrow_right_rounded,
+          color: CustomColors.pinkMain),
       skip: _buildTextSkip(),
       showSkipButton: true,
     );
