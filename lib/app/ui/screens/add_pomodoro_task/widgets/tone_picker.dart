@@ -115,7 +115,7 @@ class _TonePickerBottomSheetState extends State<_TonePickerBottomSheet> {
         children: [
           Padding(
             padding:
-                const EdgeInsetsDirectional.only(top: 20, start: 20, end: 20),
+                const EdgeInsetsDirectional.only(top: 25, start: 20, end: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

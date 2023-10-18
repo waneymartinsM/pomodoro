@@ -10,8 +10,8 @@ ScaffoldFeatureController<Widget, SnackBarClosedReason>
     height: 90,
     text: Text(
       "Bom trabalho! Sua tarefa pomodoro foi concluída.",
-      style: GoogleFonts.poppins(),
+      style: GoogleFonts.poppins(color: CustomColors.pinkMain),
     ),
-    icon: const Icon(Icons.done, color: CustomColors.black, size: 50),
+    icon: const Icon(Icons.done, color: CustomColors.black, size: 30),
   );
 }

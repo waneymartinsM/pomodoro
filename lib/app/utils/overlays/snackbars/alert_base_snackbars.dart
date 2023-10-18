@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/core/utils/custom_colors.dart';
 
 ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
   BuildContext context, {
@@ -7,7 +8,6 @@ ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
   List<Color>? colors,
   double? height,
 }) {
-  final theme = Theme.of(context);
   final snackBar = SnackBar(
     dismissDirection: DismissDirection.horizontal,
     backgroundColor: Colors.transparent,
@@ -22,10 +22,7 @@ ScaffoldFeatureController<Widget, SnackBarClosedReason> showAlertBaseSnackBar(
       alignment: AlignmentDirectional.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        gradient: LinearGradient(
-          colors: colors ??
-              [theme.colorScheme.background, theme.colorScheme.surface],
-        ),
+        color: CustomColors.white,
         boxShadow: const [
           BoxShadow(
             blurRadius: 5,
