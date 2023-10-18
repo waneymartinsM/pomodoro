@@ -1,9 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
-import 'package:pomodoro/app/config/localization/app_localization_data.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
 import 'package:pomodoro/app/ui/screens/add_pomodoro_task/add_pomodoro_task_screen_controller.dart';
@@ -74,7 +73,7 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
         children: [
           ListView(
             controller: controller.scrollController,
-            padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 80),
+            padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 80),
             children: [
               _buildTaskTitle(),
               const SizedBox(height: 30),
@@ -129,17 +128,17 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
                 min: 1,
                 max: 10,
                 title: "Rounds",
-                suffix: "Intervalos",
+                suffix: "Quant.",
                 height: 80,
                 width: constraints.maxWidth,
                 initialNumber: controller.maxPomodoroRound,
                 onSelectedItemChanged: controller.onMaxPomodoroRoundChange,
               ),
               HorizontalNumberPicker(
-                min: 15,
+                min: 5,
                 max: 90,
-                title: "Intervalo de Trabalho",
-                suffix: "Minutos",
+                title: "Tempo do Pomodoro",
+                suffix: "Min.",
                 initialNumber: controller.workDuration,
                 height: 80,
                 width: constraints.maxWidth,
@@ -152,8 +151,8 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
                   min: 1,
                   max: 15,
                   isActive: controller.isShortBreakPickerActive,
-                  title: "Intervalo Curto",
-                  suffix: "Minutos",
+                  title: "Tempo do Intervalo",
+                  suffix: "Min.",
                   height: 80,
                   width: constraints.maxWidth,
                   initialNumber: controller.shortBreakDuration,
@@ -165,8 +164,8 @@ class _AddPomodoroTaskScreenState extends State<AddPomodoroTaskScreen> {
               HorizontalNumberPicker(
                 min: 0,
                 max: 30,
-                title: "Intervalo Longo",
-                suffix: "Minutos",
+                title: "Tempo do Último Intervalo",
+                suffix: "Min.",
                 height: 80,
                 width: constraints.maxWidth,
                 initialNumber: controller.longBreakDuration,

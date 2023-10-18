@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
-import 'package:pomodoro/app/config/localization/app_localization_data.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/enums/tones.dart';
 import 'package:pomodoro/app/data/services/pomodoro_sound_player.dart';

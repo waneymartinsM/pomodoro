@@ -56,7 +56,8 @@ class _StartPomodoroTaskScreenState extends State<StartPomodoroTaskScreen> {
 
   @override
   void dispose() {
-    Get.delete<StartPomodoroTaskScreenController>(); // Remove o controlador da tela.
+    Get.delete<
+        StartPomodoroTaskScreenController>(); // Remove o controlador da tela.
     super.dispose();
   }
 
@@ -160,20 +161,24 @@ class _AppBar extends StatelessWidget {
     final StartPomodoroTaskScreenController controller = Get.find();
     return AppBar(
       backgroundColor: Colors.transparent,
-      title: Text(
-        controller.taskTitle,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.poppins(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: CustomColors.white),
-        overflow: TextOverflow.ellipsis,
-      ),
+      // title: Text(
+      //   controller.taskTitle,
+      //   textAlign: TextAlign.center,
+      //   style: GoogleFonts.poppins(
+      //     fontSize: 18,
+      //     fontWeight: FontWeight.w400,
+      //     color: Colors.grey.shade700,
+      //   ),
+      //   overflow: TextOverflow.ellipsis,
+      // ),
       centerTitle: true,
       elevation: 0,
       leading: IconButton(
-        icon: const Icon(Icons.keyboard_arrow_left_rounded,
-            size: 27, color: CustomColors.white),
+        icon: Icon(
+          Icons.keyboard_arrow_left_rounded,
+          size: 27,
+          color: Colors.grey.shade700,
+        ),
         onPressed: () {
           if (!controller.isTimerStarted) return Navigator.pop(context);
           showBackAlertDialog(
