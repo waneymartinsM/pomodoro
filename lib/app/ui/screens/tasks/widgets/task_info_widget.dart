@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
 

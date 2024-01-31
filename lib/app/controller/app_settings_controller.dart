@@ -3,9 +3,6 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pomodoro/app/config/localization/app_localization_data.dart';
-import 'package:pomodoro/app/config/localization/localizations.dart';
-import 'package:pomodoro/app/config/theme/themes.dart';
 import 'package:pomodoro/app/data/databases/app_settings_database.dart';
 import 'package:pomodoro/app/data/models/app_settings.dart';
 

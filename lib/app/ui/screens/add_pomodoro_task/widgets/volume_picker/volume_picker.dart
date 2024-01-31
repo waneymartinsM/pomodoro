@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pomodoro/app/config/localization/app_localization.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'painters/custom_track_slider.dart';
 

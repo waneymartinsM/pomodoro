@@ -12,18 +12,17 @@ class AppLifeCycle extends StatefulWidget {
   State<AppLifeCycle> createState() => _AppLifeCycleState();
 }
 
-class _AppLifeCycleState extends State<AppLifeCycle> with WidgetsBindingObserver {
+class _AppLifeCycleState extends State<AppLifeCycle>
+    with WidgetsBindingObserver {
 
   @override
   void initState() {
-    // Adiciona este widget como um observador dos ciclos de vida do aplicativo.
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
-    // Remove este widget como observador ao ser descartado.
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
