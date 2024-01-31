@@ -4,7 +4,7 @@ import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_reportage_model.dart';
 import 'package:pomodoro/app/data/services/android_native_channel.dart';
 import 'package:pomodoro/app/data/timers/pomodoro_task_timer.dart';
-import 'package:pomodoro/app/ui/screens/start_pomodoro_task/start_pomodoro_task_screen_controller.dart';
+import 'package:pomodoro/app/presentation/pages/screens/start_pomodoro_task/start_pomodoro_task_screen_controller.dart';
 
 class AppController {
   final AndroidNativeChannel _androidNativeChannel = AndroidNativeChannel();
