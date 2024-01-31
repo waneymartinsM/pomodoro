@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/app/config/routes/routes_name.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
-import 'package:pomodoro/app/ui/screens/tasks/tasks_controller.dart';
-import 'package:pomodoro/app/ui/screens/tasks/widgets/custom_tab_bar_view.dart';
+import 'package:pomodoro/app/presentation/pages/screens/tasks/tasks_controller.dart';
+import 'package:pomodoro/app/presentation/pages/screens/tasks/widgets/custom_tab_bar_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

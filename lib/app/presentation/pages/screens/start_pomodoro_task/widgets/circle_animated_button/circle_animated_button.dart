@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
-import 'package:pomodoro/app/ui/widgets/custom_animated_icon.dart';
+import 'package:pomodoro/app/presentation/widgets/custom_animated_icon.dart';
 import 'constant.dart';
 import 'circle_animated_button_controller.dart';
 

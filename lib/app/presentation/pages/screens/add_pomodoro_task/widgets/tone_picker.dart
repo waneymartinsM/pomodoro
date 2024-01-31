@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/enums/tones.dart';
 import 'package:pomodoro/app/data/services/pomodoro_sound_player.dart';
-import 'package:pomodoro/app/ui/screens/add_pomodoro_task/add_pomodoro_task_screen_controller.dart';
+import 'package:pomodoro/app/presentation/pages/screens/add_pomodoro_task/add_pomodoro_task_screen_controller.dart';
 import 'package:pomodoro/app/utils/helpers/simple_state_builder.dart';
 import 'package:pomodoro/app/utils/overlays/snackbars/mute_alert_snackbar.dart';
 import 'volume_picker/volume_picker.dart';

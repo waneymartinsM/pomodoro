@@ -6,7 +6,7 @@ import 'package:pomodoro/app/config/routes/routes_name.dart';
 import 'package:pomodoro/app/controller/app_controller.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
-import 'package:pomodoro/app/ui/screens/tasks/tasks_controller.dart';
+import 'package:pomodoro/app/presentation/pages/screens/tasks/tasks_controller.dart';
 import 'task_info_widget.dart';
 
 class CustomTabBarView extends StatelessWidget {

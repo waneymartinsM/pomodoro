@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/app/controller/app_controller.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
-import 'package:pomodoro/app/ui/screens/start_pomodoro_task/widgets/gradient_text.dart';
+import 'package:pomodoro/app/presentation/pages/screens/start_pomodoro_task/widgets/gradient_text.dart';
 import 'package:pomodoro/app/utils/overlays/snackbars/mute_alert_snackbar.dart';
 import 'start_pomodoro_task_screen_controller.dart';
 import 'widgets/animated_text_style.dart';

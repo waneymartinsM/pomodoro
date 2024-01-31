@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/app/core/utils/custom_colors.dart';
-import 'package:pomodoro/app/modules/welcome/welcome_page_one.dart';
-import 'package:pomodoro/app/modules/welcome/welcome_page_three.dart';
-import 'package:pomodoro/app/modules/welcome/welcome_page_two.dart';
-import 'package:pomodoro/app/ui/widgets/custom_animated_button.dart';
+import 'package:pomodoro/app/presentation/pages/welcome/welcome_page_one.dart';
+import 'package:pomodoro/app/presentation/pages/welcome/welcome_page_three.dart';
+import 'package:pomodoro/app/presentation/pages/welcome/welcome_page_two.dart';
+import 'package:pomodoro/app/presentation/widgets/custom_animated_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
