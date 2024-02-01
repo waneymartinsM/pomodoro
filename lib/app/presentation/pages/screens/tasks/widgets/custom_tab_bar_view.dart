@@ -106,8 +106,8 @@ class CustomTabBarView extends StatelessWidget {
             ),
           ],
         ),
-        const Stack(children: []),
-        const Stack(children: []),
+        // const Stack(children: []),
+        // const Stack(children: []),
       ],
     );
   }
