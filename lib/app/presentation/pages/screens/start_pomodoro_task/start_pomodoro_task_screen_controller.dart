@@ -35,16 +35,6 @@ class StartPomodoroTaskScreenController extends GetxController {
   bool get isTimerStarted => !(_timer.timerStatus.isCanceled);
   bool get isTimerStopped => _timer.timerStatus.isStopped;
 
-  // Método para obter o texto específico do Pomodoro com base no estado
-  // String get _getPomodoroText {
-  //   if (_timer.pomodoroStatus.isWorkTime) {
-  //     return _appText.getWorkTimeText(_timer.currentMaxDuration);
-  //   } else if (_timer.pomodoroStatus.isShortBreakTime) {
-  //     return _appText.getShortBreakText(_timer.currentMaxDuration);
-  //   } else {
-  //     return _appText.getLongBreakText(_timer.currentMaxDuration);
-  //   }
-  // }
   String get _getPomodoroText {
     if (_timer.pomodoroStatus.isWorkTime) {
       return 'Mantenha o foco por ${_timer.currentMaxDuration.inMinutes} minutos';
