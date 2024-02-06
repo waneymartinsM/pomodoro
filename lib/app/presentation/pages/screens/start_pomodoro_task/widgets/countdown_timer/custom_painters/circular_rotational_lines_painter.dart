@@ -29,7 +29,8 @@ class CircularRotationalLinesPainter extends CustomPainter {
           canvas: canvas,
           center: center,
           size: size,
-          radius: (radius + strokeWidth / 2) + (i * spaceBetweenRotationalLines),
+          radius:
+              (radius + strokeWidth / 2) + (i * spaceBetweenRotationalLines),
           deg: rotationalLinesDeg + i * 95,
           alpha: i == 1 ? 0xFF : 0xff - i * 30,
         );
@@ -45,7 +46,8 @@ class CircularRotationalLinesPainter extends CustomPainter {
     required double deg,
     required int alpha,
   }) {
-    final List<Color> newColors = colors.map((Color item) => item.withAlpha(alpha)).toList();
+    final List<Color> newColors =
+        colors.map((Color item) => item.withAlpha(alpha)).toList();
 
     final Paint paint = Paint()
       ..shader = size.makeShader(newColors, deg)

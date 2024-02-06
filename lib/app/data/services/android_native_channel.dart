@@ -11,7 +11,8 @@ class AndroidNativeChannel {
 
   // Este método inicia um serviço na plataforma Android com base nos dados fornecidos
   Future<bool> startService(PomodoroAppSateData initData) async {
-    return (await _platformChannel.invokeMethod('startService', initData.toMap()));
+    return (await _platformChannel.invokeMethod(
+        'startService', initData.toMap()));
   }
 
   // Este método para um serviço em execução na plataforma Android

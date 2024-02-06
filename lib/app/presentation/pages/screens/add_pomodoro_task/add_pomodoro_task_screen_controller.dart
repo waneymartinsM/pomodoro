@@ -87,7 +87,8 @@ class AddPomodoroTaskScreenController extends GetxController {
       id: _id,
       title: title,
       workDuration: workDuration.minutes,
-      shortBreakDuration: _maxPomodoroRound == 1 ? Duration.zero : shortBreakDuration.minutes,
+      shortBreakDuration:
+          _maxPomodoroRound == 1 ? Duration.zero : shortBreakDuration.minutes,
       longBreakDuration: longBreakDuration.minutes,
       maxPomodoroRound: _maxPomodoroRound,
       tone: tone.value,

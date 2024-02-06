@@ -18,7 +18,8 @@ class PomodoroAppSateData {
   }) {
     return PomodoroAppSateData(
       pomodoroTaskModel: pomodoroTaskModel ?? this.pomodoroTaskModel,
-      pomodoroTaskReportageModel: pomodoroTaskReportageModel ?? this.pomodoroTaskReportageModel,
+      pomodoroTaskReportageModel:
+          pomodoroTaskReportageModel ?? this.pomodoroTaskReportageModel,
     );
   }
 

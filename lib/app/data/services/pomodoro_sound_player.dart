@@ -57,7 +57,7 @@ class PomodoroSoundPlayer {
   // Faz o dispositivo vibrar:
   Future<void> vibrate() async {
     if (await canVibrate()) {
-      await Vibration.vibrate(pattern:  [0, 300, 100, 300]);
+      await Vibration.vibrate(pattern: [0, 300, 100, 300]);
     } else {
       await Vibration.vibrate();
     }
@@ -66,7 +66,8 @@ class PomodoroSoundPlayer {
   // Define o volume do som do dispositivo:
   Future<void> setVolume(double volume) async {
     if (await cantPlaySound()) return;
-    await RealVolume.setVolume(volume, showUI: false, streamType: StreamType.RING);
+    await RealVolume.setVolume(volume,
+        showUI: false, streamType: StreamType.RING);
   }
 
   // Reproduz um toque (som) com um determinado volume:

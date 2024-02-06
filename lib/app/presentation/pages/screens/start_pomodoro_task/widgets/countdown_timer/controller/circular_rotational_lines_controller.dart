@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import '../constants.dart';
 import '../enum.dart';
 
-class CircularRotationalLinesController extends GetxController with GetTickerProviderStateMixin {
+class CircularRotationalLinesController extends GetxController
+    with GetTickerProviderStateMixin {
   late CountdownTimerStatus _status;
   late bool _isStarted;
   late final AnimationController _rotationalLinesController;
@@ -49,12 +50,12 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
   @override
   void onInit() {
     // Inicialização dos controladores de animação
-    _rotationalLinesController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3), value: 0.0)
-          ..addStatusListener((_) => _continueAnimation())
-          ..addListener(
-            () => update([kCircularRotationalLines_getbuilder]),
-          );
+    _rotationalLinesController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 3), value: 0.0)
+      ..addStatusListener((_) => _continueAnimation())
+      ..addListener(
+        () => update([kCircularRotationalLines_getbuilder]),
+      );
     _spaceBetweenLinesController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -80,7 +81,8 @@ class CircularRotationalLinesController extends GetxController with GetTickerPro
     _isStarted = true;
     update([kClockLines_getbuilder]);
     _rotationalLinesController.value = 0.0;
-    _rotationalLinesController.animateTo(1.0, duration: const Duration(milliseconds: 500));
+    _rotationalLinesController.animateTo(1.0,
+        duration: const Duration(milliseconds: 500));
     await _spaceBetweenLinesController.forward(from: 0.0);
   }
 

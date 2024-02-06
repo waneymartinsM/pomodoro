@@ -9,8 +9,10 @@ import 'package:pomodoro/app/data/timers/pomodoro_timer.dart';
 
 class PomodoroTaskTimer extends PomodoroTimer {
   PomodoroTaskTimer({
-    required TasksReportageDatabase tasksReportageDatabase,  // Injeta o banco de dados de relatórios de tarefas.
-  }) : _tasksReportageDatabase = tasksReportageDatabase;  // Inicializa o banco de dados.
+    required TasksReportageDatabase
+        tasksReportageDatabase, // Injeta o banco de dados de relatórios de tarefas.
+  }) : _tasksReportageDatabase =
+            tasksReportageDatabase; // Inicializa o banco de dados.
 
   final PomodoroSoundPlayer _soundPlayer = PomodoroSoundPlayer();
   final TasksReportageDatabase _tasksReportageDatabase;
@@ -18,20 +20,24 @@ class PomodoroTaskTimer extends PomodoroTimer {
   CompleteTimer? _timerListener;
   late PomodoroTaskModel _initState;
 
-  String get taskTitle => _initState.title;  // Obtém o título da tarefa.
-  PomodoroTaskModel get pomodoroTask => _initState.copyWith(  // Obtém o estado da tarefa do Pomodoro.
+  String get taskTitle => _initState.title; // Obtém o título da tarefa.
+  PomodoroTaskModel get pomodoroTask => _initState.copyWith(
+        // Obtém o estado da tarefa do Pomodoro.
         pomodoroRound: super.pomodoroRound,
         currentMaxDuration: super.currentMaxDuration,
         remainingDuration: super.remainingDuration,
         pomodoroStatus: super.pomodoroStatus,
         timerStatus: super.timerStatus,
       );
-  PomodoroAppSateData get pomodoroAppSateData => PomodoroAppSateData(  // Obtém o estado do aplicativo do Pomodoro.
+  PomodoroAppSateData get pomodoroAppSateData => PomodoroAppSateData(
+        // Obtém o estado do aplicativo do Pomodoro.
         pomodoroTaskModel: pomodoroTask,
         pomodoroTaskReportageModel: _taskReportageModel,
       );
-  PomodoroTaskReportageModel? get taskReportage => _taskReportageModel;  // Obtéfm informações sobre o relatório de tarefas atual.
-  Future<bool> get isSoundPlayerMuted => _soundPlayer.isSoundPlayerMuted(pomodoroTask);  // Verifica se o player de som está mudo.
+  PomodoroTaskReportageModel? get taskReportage =>
+      _taskReportageModel; // Obtéfm informações sobre o relatório de tarefas atual.
+  Future<bool> get isSoundPlayerMuted => _soundPlayer.isSoundPlayerMuted(
+      pomodoroTask); // Verifica se o player de som está mudo.
 
   @override
   Future<void> init({

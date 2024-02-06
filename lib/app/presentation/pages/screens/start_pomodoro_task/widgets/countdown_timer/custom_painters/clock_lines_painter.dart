@@ -39,5 +39,6 @@ class ClockLinesPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant ClockLinesPainter oldDelegate) => hide != oldDelegate.hide;
+  bool shouldRepaint(covariant ClockLinesPainter oldDelegate) =>
+      hide != oldDelegate.hide;
 }
