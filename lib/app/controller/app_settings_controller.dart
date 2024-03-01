@@ -8,43 +8,36 @@ import 'package:pomodoro/app/data/models/app_settings.dart';
 
 class AppSettingsController extends GetxController {
   AppSettingsController() {
-    _theme = ThemeData.light(); // Inicialize com um valor padrão (ajuste conforme necessário)
+    // Inicialize com um valor padrão (ajuste conforme necessário)
+    _theme = ThemeData.light();
   }
   final _settingsDatabase = AppSettingsDatabase();
   late ThemeData _theme;
   late bool _isDarkTheme;
-  //late AppLocalizationData _appTexts;
   late bool _isFirstAppRun;
   AppSettings? _appSettings;
 
   ThemeData get theme => _theme;
   bool get isDarkTheme => _isDarkTheme;
- // bool get isEnglish => _appTexts.locale == englishLocale;
   bool get isFirstAppRun => _isFirstAppRun;
- // AppLocalizationData get localization => _appTexts;
 
   Future<void> init() async {
     await _settingsDatabase.init();
     final settings = await _settingsDatabase.getSettings();
     settings.fold(
-          (l) => log(l.toString()), // Log de erro se as configurações não puderem ser lidas
+      (l) => log(l
+          .toString()), // Log de erro se as configurações não puderem ser lidas
       (r) {
         _appSettings = r;
-        if (_appSettings != null) {
-          _isFirstAppRun = false;
-         // _initLocale(_appSettings!.isEnglish); // Inicializa a localização com base nas configurações
-        } else {
-          _isFirstAppRun = true;
-          final isEnglishLocale = Platform.localeName.substring(0, 2) == 'en';
-          //_initLocale(isEnglishLocale); // Define a localização com base no idioma do dispositivo
-        }
+        _appSettings != null ? _isFirstAppRun = false : _isFirstAppRun = true;
       },
     );
   }
 
   void initializeTheme() {
     if (_appSettings != null) {
-      _initTheme(_appSettings!.isDarkTheme); // Inicializa o tema com base nas configurações
+      // Inicializa o tema com base nas configurações
+      _initTheme(_appSettings!.isDarkTheme);
     } else {
       final brightness = WidgetsBinding.instance.window.platformBrightness;
       _initTheme(brightness == Brightness.dark);
@@ -54,34 +47,11 @@ class AppSettingsController extends GetxController {
 
   // Salva as configurações atuais (tema e idioma) no banco de dados
   Future<void> _saveSettings() async {
-    await _settingsDatabase.saveSettings(
-      AppSettings(isDarkTheme: isDarkTheme,),
-    );
-  }
-
-  // Alterna entre os idiomas (inglês e persa)
-  void toggleLocalization() {
-    //_initLocale(!isEnglish);
-    _initTheme(_isDarkTheme);
-    update();
-    _saveSettings();
-  }
-
-  // Alterna entre os temas (claro e escuro)
-  void toggleTheme() {
-    _initTheme(!_isDarkTheme);
-    update();
-    _saveSettings();
+    await _settingsDatabase.saveSettings(AppSettings(isDarkTheme: isDarkTheme));
   }
 
   // Inicializa o tema com base no valor booleano
   void _initTheme(bool isDark) {
     _isDarkTheme = isDark;
-    //_theme = isDark ? darkTheme(localization.fontFamily) : lightTheme(localization.fontFamily);
   }
-
-  // Inicializa a localização com base no valor booleano
-  // void _initLocale(bool isEnglishLocale) {
-  //   _appTexts = isEnglishLocale ? englishLocalization : persianLocalization;
-  // }
 }

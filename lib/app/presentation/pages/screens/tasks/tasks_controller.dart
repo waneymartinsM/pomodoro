@@ -13,8 +13,10 @@ class TasksController extends GetxController {
   final _doneTasks = <PomodoroTaskModel>[].obs;
   final _remainedTasks = <PomodoroTaskModel>[].obs;
   final _allTasksListKey = GlobalKey<AnimatedListState>();
-  GlobalKey<AnimatedListState> _doneTasksListKey = GlobalKey<AnimatedListState>();
-  GlobalKey<AnimatedListState> _remainedTasksListKey = GlobalKey<AnimatedListState>();
+  GlobalKey<AnimatedListState> _doneTasksListKey =
+      GlobalKey<AnimatedListState>();
+  GlobalKey<AnimatedListState> _remainedTasksListKey =
+      GlobalKey<AnimatedListState>();
 
   final _allTasksListStatus = TasksListStatus.loading.obs;
   final _doneTasksListStatus = TasksListStatus.loading.obs;
@@ -27,7 +29,8 @@ class TasksController extends GetxController {
   List<PomodoroTaskModel> get remainedTasks => _remainedTasks;
   GlobalKey<AnimatedListState> get allTasksListKey => _allTasksListKey;
   GlobalKey<AnimatedListState> get doneTasksListKey => _doneTasksListKey;
-  GlobalKey<AnimatedListState> get remainedTasksListKey => _remainedTasksListKey;
+  GlobalKey<AnimatedListState> get remainedTasksListKey =>
+      _remainedTasksListKey;
   TasksListStatus get allTasksListStatus => _allTasksListStatus.value;
   TasksListStatus get doneTasksListStatus => _doneTasksListStatus.value;
   TasksListStatus get remainedTasksListStatus => _remainedTasksListStatus.value;
@@ -82,7 +85,8 @@ class TasksController extends GetxController {
   }
 
   // Inicializar listas de tarefas concluídas e não concluídas:
-  Future<void> _initDoneAndRemainedTasks(List<PomodoroTaskModel> newTasks) async {
+  Future<void> _initDoneAndRemainedTasks(
+      List<PomodoroTaskModel> newTasks) async {
     _doneTasksListStatus.value = TasksListStatus.loading;
     _remainedTasksListStatus.value = TasksListStatus.loaded;
     final now = DateTime.now();
@@ -99,7 +103,8 @@ class TasksController extends GetxController {
       (r) {
         final reports = r;
         for (PomodoroTaskModel task in newTasks) {
-          final isDone = reports.any((element) => element.pomodoroTaskId == task.id);
+          final isDone =
+              reports.any((element) => element.pomodoroTaskId == task.id);
           if (isDone) {
             _doneTasks.add(task);
           } else {
@@ -121,7 +126,8 @@ class TasksController extends GetxController {
       },
       (r) async {
         await Future.delayed(const Duration(milliseconds: 500));
-        _allTasksListKey.currentState?.insertItem(0, duration: const Duration(milliseconds: 500));
+        _allTasksListKey.currentState
+            ?.insertItem(0, duration: const Duration(milliseconds: 500));
         _remainedTasksListKey.currentState
             ?.insertItem(0, duration: const Duration(milliseconds: 500));
         _allTasks.insert(0, r);
@@ -135,18 +141,18 @@ class TasksController extends GetxController {
     final result = await _database.update(task);
 
     result.fold(
-          (l) {
+      (l) {
         _markAllAsError();
       },
-          (r) async {
+      (r) async {
         final indexInAllTask = _allTasks.indexWhere((e) => e.id == task.id);
         _allTasks[indexInAllTask] = task;
 
         final indexInDoneTasks = _doneTasks.indexWhere((e) => e.id == task.id);
         if (indexInDoneTasks != -1) _doneTasks[indexInDoneTasks] = task;
 
-        final indexInRemainTasks = _remainedTasks.indexWhere((e) =>
-        e.id == task.id);
+        final indexInRemainTasks =
+            _remainedTasks.indexWhere((e) => e.id == task.id);
         if (indexInRemainTasks != -1) _remainedTasks[indexInRemainTasks] = task;
         await _tasksReportageDatabase.update(task);
       },
@@ -182,12 +188,14 @@ class TasksController extends GetxController {
 
         final indexInDoneTasks = _doneTasks.indexWhere((e) => e.id == id);
         if (indexInDoneTasks != -1) {
-          _removeItemWithAnimation(_doneTasksListKey, _doneTasks, indexInDoneTasks);
+          _removeItemWithAnimation(
+              _doneTasksListKey, _doneTasks, indexInDoneTasks);
         }
 
         final indexInRemainTasks = _remainedTasks.indexWhere((e) => e.id == id);
         if (indexInRemainTasks != -1) {
-          _removeItemWithAnimation(_remainedTasksListKey, _remainedTasks, indexInRemainTasks);
+          _removeItemWithAnimation(
+              _remainedTasksListKey, _remainedTasks, indexInRemainTasks);
         }
         await _tasksReportageDatabase.delete(id);
       },

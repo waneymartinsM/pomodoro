@@ -9,20 +9,21 @@ import 'package:pomodoro/app/presentation/pages/screens/home/home_page.dart';
 import 'package:pomodoro/app/presentation/pages/screens/introduction/app_introduction_screen.dart';
 import 'package:pomodoro/app/presentation/pages/screens/start_pomodoro_task/start_pomodoro_task_screen.dart';
 
-// Um mapa de rotas associando nomes de rota a construtores de widgets.
+// Um mapa de rotas associando nomes de rota a construtores de widgets:
 final Map<String, WidgetBuilder> appRoutes = {
-  RoutesName.homeScreen: (context) => const HomePage(),
-  RoutesName.startPomodoroTaskScreen: (context) => const StartPomodoroTaskScreen(),
-  RoutesName.addPomodoroTaskScreen: (context) => AddPomodoroTaskScreen(
-        task: ModalRoute.of(context)!.settings.arguments as PomodoroTaskModel?,
-      ),
   RoutesName.appIntroductionScreen: (context) => const AppIntroductionScreen(),
+  RoutesName.homeScreen: (context) => const HomePage(),
+  RoutesName.startPomodoroTaskScreen: (context) =>
+      const StartPomodoroTaskScreen(),
+  RoutesName.addPomodoroTaskScreen: (context) => AddPomodoroTaskScreen(
+      task: ModalRoute.of(context)!.settings.arguments as PomodoroTaskModel?),
 };
 
 // Função que é chamada quando a rota é gerada. Ela cria uma transição de slide entre as telas.
 Route onGenerateRoute(RouteSettings settings) {
   final curveTween = CurveTween(curve: Curves.ease);
-  final tweenOffset = Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).chain(curveTween);
+  final tweenOffset = Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
+      .chain(curveTween);
   return PageRouteBuilder(
     settings: settings,
     pageBuilder: (context, animation, secondaryAnimation) {
@@ -47,7 +48,8 @@ List<Route> onGenerateInitialRoutes(String initRoute) {
   return [
     MaterialPageRoute(builder: appRoutes[RoutesName.homeScreen]!),
     if (initRoute != RoutesName.homeScreen)
-      MaterialPageRoute(builder: appRoutes[RoutesName.startPomodoroTaskScreen]!),
+      MaterialPageRoute(
+          builder: appRoutes[RoutesName.startPomodoroTaskScreen]!),
   ];
 }
 
