@@ -75,7 +75,6 @@ flutter:
     - assets/audio/status_sounds/
     - assets/icons/
     - assets/images/
-    - assets/icons/tarefa.png
 
   fonts:
     - family: SourceSansPro
