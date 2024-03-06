@@ -8,11 +8,10 @@ import 'package:pomodoro/app/data/services/pomodoro_sound_player.dart';
 import 'package:pomodoro/app/data/timers/pomodoro_timer.dart';
 
 class PomodoroTaskTimer extends PomodoroTimer {
-  PomodoroTaskTimer({
-    required TasksReportageDatabase
-        tasksReportageDatabase, // Injeta o banco de dados de relatórios de tarefas.
-  }) : _tasksReportageDatabase =
-            tasksReportageDatabase; // Inicializa o banco de dados.
+  // Injeta o banco de dados de relatórios de tarefas:
+  PomodoroTaskTimer({required TasksReportageDatabase tasksReportageDatabase})
+      // Inicializa o banco de dados:
+      : _tasksReportageDatabase = tasksReportageDatabase;
 
   final PomodoroSoundPlayer _soundPlayer = PomodoroSoundPlayer();
   final TasksReportageDatabase _tasksReportageDatabase;

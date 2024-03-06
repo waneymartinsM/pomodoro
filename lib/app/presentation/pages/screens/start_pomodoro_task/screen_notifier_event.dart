@@ -1,7 +1,7 @@
 enum ScreenNotifierEvent {
-  showPomodoroFinishSnackbar,
-  showMuteAlertSnackbar;
+  showPomodoroFinishSnackBar,
+  showMuteAlertSnackBar;
 
-  bool get isShowPomodoroFinishSnackbar => this == showPomodoroFinishSnackbar;
-  bool get isShowMuteAlertSnackbar => this == showMuteAlertSnackbar;
+  bool get isShowPomodoroFinishSnackBar => this == showPomodoroFinishSnackBar;
+  bool get isShowMuteAlertSnackBar => this == showMuteAlertSnackBar;
 }

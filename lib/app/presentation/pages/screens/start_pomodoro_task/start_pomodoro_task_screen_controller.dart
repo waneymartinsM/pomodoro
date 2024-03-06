@@ -10,10 +10,10 @@ import 'widgets/circle_animated_button/circle_animated_button_controller.dart';
 import 'widgets/countdown_timer/controller/countdown_timer_controller.dart';
 
 class StartPomodoroTaskScreenController extends GetxController {
-
   // Controladores para a Contagem Regressiva e Botão Animado
   final _countdownTimerController = Get.put(CountdownTimerController());
-  final _circleAnimatedButtonController = Get.put(CircleAnimatedButtonController());
+  final _circleAnimatedButtonController =
+      Get.put(CircleAnimatedButtonController());
 
   // Variáveis observáveis para controlar a cor da tela e texto do Pomodoro
   final _showLinerGradientColors = false.obs;
@@ -31,7 +31,8 @@ class StartPomodoroTaskScreenController extends GetxController {
   Stream<ScreenNotifierEvent> get screenNotifier => _screenNotifier.stream;
   PomodoroTaskModel get pomodoroTask => _timer.pomodoroTask;
   String get taskTitle => _timer.taskTitle;
-  String? get pomodoroText => _pomodoroText.value.isEmpty ? null : _pomodoroText.value;
+  String? get pomodoroText =>
+      _pomodoroText.value.isEmpty ? null : _pomodoroText.value;
   bool get isTimerStarted => !(_timer.timerStatus.isCanceled);
   bool get isTimerStopped => _timer.timerStatus.isStopped;
 
@@ -45,10 +46,10 @@ class StartPomodoroTaskScreenController extends GetxController {
     }
   }
 
-
   // Método para obter o texto do subtítulo
   String get _getSubtitleText {
-    int round = _timer.pomodoroRound + (_timer.pomodoroStatus.isLongBreakTime ? 0 : 1);
+    int round =
+        _timer.pomodoroRound + (_timer.pomodoroStatus.isLongBreakTime ? 0 : 1);
     return "$round de ${_timer.maxPomodoroRound} sessões";
   }
 
@@ -162,7 +163,7 @@ class StartPomodoroTaskScreenController extends GetxController {
     _showLinerGradientColors.value = false;
     _countdownTimerController.subtitleText = null;
     _pomodoroText.value = '';
-    _screenNotifier.add(ScreenNotifierEvent.showPomodoroFinishSnackbar);
+    _screenNotifier.add(ScreenNotifierEvent.showPomodoroFinishSnackBar);
   }
 
   // Método chamado quando uma rodada Pomodoro é concluída
@@ -179,7 +180,7 @@ class StartPomodoroTaskScreenController extends GetxController {
   // Método para verificar as configurações de som
   Future<void> checkSoundSettings() async {
     if (await _timer.isSoundPlayerMuted) {
-      _screenNotifier.add(ScreenNotifierEvent.showMuteAlertSnackbar);
+      _screenNotifier.add(ScreenNotifierEvent.showMuteAlertSnackBar);
     }
   }
 }

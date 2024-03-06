@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pomodoro/app/config/routes/app_routes.dart';
 import 'package:pomodoro/app/controller/app_settings_controller.dart';
+import 'package:pomodoro/app/core/utils/custom_colors.dart';
 import 'package:pomodoro/app_life_cycle.dart';
 
 class PomodoroApp extends StatelessWidget {
@@ -15,13 +16,9 @@ class PomodoroApp extends StatelessWidget {
           designSize: const Size(360, 690),
           builder: (_, __) {
             return GetBuilder<AppSettingsController>(
-              initState: (_) =>
-                  Get.find<AppSettingsController>().initializeTheme(),
               builder: (controller) {
                 return MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  color: controller.theme.colorScheme.background,
-                  theme: controller.theme,
                   onGenerateInitialRoutes: onGenerateInitialRoutes,
                   onGenerateRoute: onGenerateRoute,
                   initialRoute: getInitialRoute(),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomodoro/app/controller/app_controller.dart';
@@ -15,7 +14,6 @@ class AppLifeCycle extends StatefulWidget {
 
 class _AppLifeCycleState extends State<AppLifeCycle>
     with WidgetsBindingObserver {
-
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);

@@ -90,7 +90,7 @@ class TasksController extends GetxController {
     _doneTasksListStatus.value = TasksListStatus.loading;
     _remainedTasksListStatus.value = TasksListStatus.loaded;
     final now = DateTime.now();
-    final result = await _tasksReportageDatabase.getAllReportagesInDate(now);
+    final result = await _tasksReportageDatabase.getAllReportsUpToDate(now);
     _doneTasksListKey = GlobalKey<AnimatedListState>();
     _remainedTasksListKey = GlobalKey<AnimatedListState>();
     _doneTasks.clear();

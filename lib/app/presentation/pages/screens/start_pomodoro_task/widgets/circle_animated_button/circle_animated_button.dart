@@ -29,7 +29,7 @@ class CircleAnimatedButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GetBuilder<CircleAnimatedButtonController>(
-            id: kCancelButton_getbuilderKey,
+            id: kCancelButton_getBuilderKey,
             builder: (controller) {
               return InkWell(
                 onTap: () {
@@ -47,7 +47,7 @@ class CircleAnimatedButton extends StatelessWidget {
             },
           ),
           GetBuilder<CircleAnimatedButtonController>(
-            id: kMainButton_getbuilderKey,
+            id: kMainButton_getBuilderKey,
             builder: (controller) {
               return InkWell(
                 onTap: () {
@@ -82,7 +82,7 @@ class CircleAnimatedButton extends StatelessWidget {
             },
           ),
           GetBuilder<CircleAnimatedButtonController>(
-            id: kRestartButton_getbuilderKey,
+            id: kRestartButton_getBuilderKey,
             builder: (controller) {
               return InkWell(
                 onTap: () {

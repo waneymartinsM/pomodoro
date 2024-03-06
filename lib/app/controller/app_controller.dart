@@ -2,12 +2,10 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_model.dart';
 import 'package:pomodoro/app/data/models/pomodoro_task_reportage_model.dart';
-import 'package:pomodoro/app/data/services/android_native_channel.dart';
 import 'package:pomodoro/app/data/timers/pomodoro_task_timer.dart';
 import 'package:pomodoro/app/presentation/pages/screens/start_pomodoro_task/start_pomodoro_task_screen_controller.dart';
 
 class AppController {
-  final AndroidNativeChannel _androidNativeChannel = AndroidNativeChannel();
   final PomodoroTaskTimer _pomodoroTaskTimer =
       PomodoroTaskTimer(tasksReportageDatabase: Get.find());
 
@@ -34,7 +32,6 @@ class AppController {
     //   taskReportageModel: state.pomodoroTaskReportageModel,
     //   isAlreadyStarted: true,
     // );
-    ///
   }
 
   // Método chamado quando o aplicativo está em pausa
@@ -49,13 +46,9 @@ class AppController {
     // Se o temporizador estiver parado, salva o relatório da tarefa e o estado do aplicativo
     if (controller.isTimerStopped) {
       await _pomodoroTaskTimer.saveTaskReport();
-      await _androidNativeChannel.saveState(_pomodoroTaskTimer.pomodoroAppSateData);
     } else {
-
       // Se o temporizador estiver em execução, para o temporizador e inicia um serviço nativo no Android
-      final appState = _pomodoroTaskTimer.pomodoroAppSateData;
       _pomodoroTaskTimer.stop();
-      await _androidNativeChannel.startService(appState);
     }
   }
 
@@ -71,7 +64,6 @@ class AppController {
     if (Get.isRegistered<StartPomodoroTaskScreenController>()) {
       controller = Get.find();
     } else {
-
       // Se a tela não estiver registrada, cria uma instância
       controller = Get.put(StartPomodoroTaskScreenController());
     }
@@ -83,7 +75,6 @@ class AppController {
       onFinish: controller.onPomodoroTimerFinish,
       taskReportageModel: taskReportageModel,
     );
-
     // Inicializa o controlador da tela 'StartPomodoroTaskScreenController'
     controller.init(_pomodoroTaskTimer, isAlreadyStarted);
   }

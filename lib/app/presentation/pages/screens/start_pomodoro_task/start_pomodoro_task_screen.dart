@@ -34,7 +34,7 @@ class _StartPomodoroTaskScreenState extends State<StartPomodoroTaskScreen> {
           if (!mounted) return; // Verifica se o widget ainda está montado.
           ScaffoldMessenger.of(context)
               .clearSnackBars(); // Remove barras de aviso.
-          if (event.isShowPomodoroFinishSnackbar) {
+          if (event.isShowPomodoroFinishSnackBar) {
             showPomodoroFinishSnackBar(
                 context); // Exibe uma barra de aviso de término do Pomodoro.
           } else {

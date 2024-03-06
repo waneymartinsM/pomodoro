@@ -9,7 +9,6 @@ class CircleAnimatedButtonController extends GetxController
   late final AnimationController _animationController;
   late final Animation<AlignmentGeometry?> animationLeft;
   late final Animation<AlignmentGeometry?> animationRight;
-
   late CircleAnimatedButtonStatus _circleButtonStatus;
 
   // Quando [inProgress] é verdadeiro, o botão não responde ao toque do usuário
@@ -33,9 +32,9 @@ class CircleAnimatedButtonController extends GetxController
     }
     // Atualiza os componentes de interface do usuário relacionados aos botões
     update([
-      kCancelButton_getbuilderKey,
-      kRestartButton_getbuilderKey,
-      kMainButton_getbuilderKey
+      kCancelButton_getBuilderKey,
+      kRestartButton_getBuilderKey,
+      kMainButton_getBuilderKey
     ]);
   }
 
@@ -46,7 +45,7 @@ class CircleAnimatedButtonController extends GetxController
       duration: const Duration(milliseconds: 250),
     );
     _animationController.addListener(
-      () => update([kCancelButton_getbuilderKey, kRestartButton_getbuilderKey]),
+      () => update([kCancelButton_getBuilderKey, kRestartButton_getBuilderKey]),
     );
 
     // Configura as animações para a esquerda e direita
@@ -62,7 +61,6 @@ class CircleAnimatedButtonController extends GetxController
         end: AlignmentDirectional.centerEnd,
       ),
     );
-
     super.onInit();
   }
 
@@ -75,7 +73,7 @@ class CircleAnimatedButtonController extends GetxController
   // Inicia a animação
   Future<void> startAnimation() async {
     _circleButtonStatus = CircleAnimatedButtonStatus.started;
-    update([kMainButton_getbuilderKey]);
+    update([kMainButton_getBuilderKey]);
     await _startAnimations();
   }
 
@@ -83,25 +81,25 @@ class CircleAnimatedButtonController extends GetxController
   void restartAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.started;
     _turns += 1;
-    update([kRestartButton_getbuilderKey, kMainButton_getbuilderKey]);
+    update([kRestartButton_getBuilderKey, kMainButton_getBuilderKey]);
   }
 
   // Pausa a animação
   void pauseAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.pause;
-    update([kMainButton_getbuilderKey]);
+    update([kMainButton_getBuilderKey]);
   }
 
   // Retoma a animação
   void resumeAnimation() {
     _circleButtonStatus = CircleAnimatedButtonStatus.resumed;
-    update([kMainButton_getbuilderKey]);
+    update([kMainButton_getBuilderKey]);
   }
 
   // Conclui a animação
   Future<void> finishAnimation() async {
     _circleButtonStatus = CircleAnimatedButtonStatus.finished;
-    update([kMainButton_getbuilderKey]);
+    update([kMainButton_getBuilderKey]);
     await _startAnimations();
   }
 

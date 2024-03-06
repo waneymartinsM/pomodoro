@@ -27,7 +27,6 @@ class CountdownTimer extends StatelessWidget {
     const double strokeWidth = 30;
     const double areaSize = radius * 2 + strokeWidth;
     const Size customPaintSize = Size.square(areaSize);
-    final theme = Theme.of(context);
     final colors = [const Color(0xFFCC6F76), const Color(0xFFA0575D)];
 
     return SizedBox(
