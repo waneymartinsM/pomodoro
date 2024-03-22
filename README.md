@@ -10,7 +10,6 @@ A new Flutter project.
 <img src="screenshots/Screenshot_Splash_Page2.png" width="20%">
 <img src="screenshots/Screenshot_Splash_Page3.png" width="20%">
 <img src="screenshots/Screenshot_Home_Page.png" width="20%">
-<img src="screenshots/Screenshot_Home_Page_Task.png" width="20%">
 </p>
 
 <p>
