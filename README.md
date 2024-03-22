@@ -39,3 +39,6 @@ O Pomodoro é uma técnica de gerenciamento de tempo que pode aumentar sua conce
 ## Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para relatar bugs, solicitar novas funcionalidades ou enviar pull requests com melhorias para o projeto.
+
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/waney-martins-838169231/)
